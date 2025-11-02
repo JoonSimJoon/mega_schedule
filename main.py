@@ -8,6 +8,7 @@ from auth import get_current_user
 from routers import teacher, desk
 from models import UserResponse
 import os
+import re
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -28,7 +29,9 @@ app = FastAPI(
 
 # CORS 설정 - 프론트엔드에서 접근 가능하도록
 # 환경 변수에서 프론트엔드 URL을 가져오거나 기본값 사용
-frontend_urls = os.getenv("FRONTEND_URLS", "").split(",")
+# 공백 또는 쉼표로 분리
+frontend_urls_str = os.getenv("FRONTEND_URLS", "")
+frontend_urls = re.split(r'[,\s]+', frontend_urls_str)
 frontend_urls = [url.strip() for url in frontend_urls if url.strip()]
 
 default_origins = [

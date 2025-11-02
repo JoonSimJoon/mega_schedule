@@ -46,5 +46,5 @@ options:
 substitutions:
   _DATABASE_URL: 'postgresql://postgres:megastudy1234@db.dqunymmpnwuraghnzlec.supabase.co:5432/postgres'
   _GOOGLE_CLIENT_ID: '886486238835-cen5lkt74cveejd78egc9n57a99tp33p.apps.googleusercontent.com'
-  _FRONTEND_URLS: 'https://pygame-7e3ab.web.app,https://pygame-7e3ab.firebaseapp.com'
+  _FRONTEND_URLS: 'https://pygame-7e3ab.web.app https://pygame-7e3ab.firebaseapp.com'
 
