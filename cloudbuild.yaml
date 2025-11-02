@@ -17,7 +17,7 @@ steps:
   
   # Cloud Run에 배포
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: bash
+    entrypoint: 'bash'
     args:
       - '-c'
       - |
