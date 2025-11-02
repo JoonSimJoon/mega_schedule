@@ -44,11 +44,7 @@ steps:
       - '--concurrency'
       - '80'
       - '--set-env-vars'
-      - 'DATABASE_URL=${_DATABASE_URL}'
-      - '--set-env-vars'
-      - 'GOOGLE_CLIENT_ID=${_GOOGLE_CLIENT_ID}'
-      - '--set-env-vars'
-      - 'FRONTEND_URLS=${_FRONTEND_URLS}'
+      - 'DATABASE_URL=${_DATABASE_URL},GOOGLE_CLIENT_ID=${_GOOGLE_CLIENT_ID},FRONTEND_URLS="${_FRONTEND_URLS}"'
 
 images:
   - 'gcr.io/$PROJECT_ID/mega-schedule-api:$COMMIT_SHA'
