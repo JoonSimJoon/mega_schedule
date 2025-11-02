@@ -17,38 +17,23 @@ steps:
   
   # Cloud Run에 배포
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
+    entrypoint: bash
     args:
-      - 'run'
-      - 'deploy'
-      - 'mega-schedule-api'
-      - '--image'
-      - 'gcr.io/$PROJECT_ID/mega-schedule-api:$COMMIT_SHA'
-      - '--region'
-      - 'asia-northeast3'
-      - '--platform'
-      - 'managed'
-      - '--allow-unauthenticated'
-      - '--port'
-      - '8000'
-      - '--memory'
-      - '512Mi'
-      - '--cpu'
-      - '1'
-      - '--timeout'
-      - '3600'
-      - '--min-instances'
-      - '0'
-      - '--max-instances'
-      - '10'
-      - '--concurrency'
-      - '80'
-      - '--update-env-vars'
-      - 'DATABASE_URL=${_DATABASE_URL}'
-      - '--update-env-vars'
-      - 'GOOGLE_CLIENT_ID=${_GOOGLE_CLIENT_ID}'
-      - '--update-env-vars'
-      - 'FRONTEND_URLS=${_FRONTEND_URLS}'
+      - '-c'
+      - |
+        gcloud run deploy mega-schedule-api \
+          --image gcr.io/$PROJECT_ID/mega-schedule-api:$COMMIT_SHA \
+          --region asia-northeast3 \
+          --platform managed \
+          --allow-unauthenticated \
+          --port 8000 \
+          --memory 512Mi \
+          --cpu 1 \
+          --timeout 3600 \
+          --min-instances 0 \
+          --max-instances 10 \
+          --concurrency 80 \
+          --set-env-vars "DATABASE_URL=${_DATABASE_URL},GOOGLE_CLIENT_ID=${_GOOGLE_CLIENT_ID},FRONTEND_URLS=${_FRONTEND_URLS}"
 
 images:
   - 'gcr.io/$PROJECT_ID/mega-schedule-api:$COMMIT_SHA'
