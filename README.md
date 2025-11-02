@@ -19,3 +19,4 @@
 - Database: SQLite (개발) / Supabase PostgreSQL (운영)
 - Authentication: Google OAuth
 - 배포: Railway / Render / Fly.io / Docker
+---
